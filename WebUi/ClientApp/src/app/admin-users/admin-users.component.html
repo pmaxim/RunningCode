@@ -115,7 +115,7 @@
               <label for="phone">Cell Phone Number</label>
               <input type="text" class="form-control"
                      name="phone"
-                     [pattern]="'[0-9 ]{10}'"
+                     [pattern]="'[0-9 ]{10,12}'"
                      [(ngModel)]="modal.phone"
                      #phone="ngModel"
                      required
