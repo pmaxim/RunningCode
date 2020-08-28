@@ -1,0 +1,136 @@
+<button type="button" class="btn btn-primary"
+        (click)="openModal(template, null)">
+  Create new User
+</button>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Login</th>
+        <th>Full Name</th>
+        <th>Phones</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of model" class="c-p" (click)="openModal(template, p)">
+        <td>
+          {{p.username}}
+        </td>
+        <td>
+          {{p.firstName}} {{p.lastName}}
+        </td>
+        <td>
+          {{p.phone}}
+        </td>
+        <td>
+          {{p.email}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">USERS</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #myForm="ngForm">
+      <div class="">
+
+        <div class="AboutMe_Form">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputUserName">Username (login)</label>
+              <input type="email" class="form-control" id="inputUserName"
+                     [(ngModel)]="modal.username"
+                     name="username"
+                     required minlength="4"
+                     [disabled]="modal.id!=0"
+                     #username="ngModel"
+                     placeholder="">
+              <div class="alert alert-danger" role="alert"
+                   *ngIf="username.invalid && (username.dirty || username.touched)">
+                minlength = 4
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="password">Password</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="modal.password"
+                     name="password"
+                     required minlength="4"
+                     #password="ngModel"
+                     id="password" placeholder="">
+              <div class="alert alert-danger" role="alert"
+                   *ngIf="password.invalid && (password.dirty || password.touched)">
+                minlength = 4
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control"
+                     name="firstName"
+                     required minlength="4"
+                     #firstName="ngModel"
+                     [(ngModel)]="modal.firstName"
+                     id="firstName" placeholder="">
+              <div class="alert alert-danger" role="alert"
+                   *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                Minlength=4!
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control"
+                     name="lastName"
+                     [(ngModel)]="modal.lastName"
+                     id="lastName" placeholder="">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group  col-md-6">
+              <label for="email">Email</label>
+              <input type="email" class="form-control"
+                     name="email"
+                     [(ngModel)]="modal.email"
+                     #email="ngModel"
+                     id="email" placeholder="" email>
+              <div class="alert alert-danger" role="alert"
+                   *ngIf="email.invalid && (email.dirty || email.touched)">
+                Invalid email!
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="phone">Cell Phone Number</label>
+              <input type="text" class="form-control"
+                     name="phone"
+                     [(ngModel)]="modal.phone"
+                     id="phone" placeholder="">
+            </div>
+          </div>
+        </div>
+
+        <!--<button class="btn btn-primary d-none">Submit</button>-->
+        <button *ngIf="modal.id==0" class="btn btn-primary"
+                [disabled]="myForm.invalid"
+                (click)="updateUser()">
+          Create new user
+        </button>
+        <button *ngIf="modal.id!=0" class="btn btn-primary"
+                [disabled]="myForm.invalid"
+                (click)="updateUser()">
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
