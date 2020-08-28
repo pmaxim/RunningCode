@@ -4,8 +4,7 @@
     {
 #if DEBUG
         public const string DefaultConnection = "Server=DESKTOP-JPQ21PS;Database=TestBd;Trusted_Connection=True;MultipleActiveResultSets=true";
-        
-
+       
 #else
         //.102
         public const string DefaultConnection =

@@ -20,6 +20,8 @@ namespace Domain.Migrations
                     LastName = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
+                    Gender = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
                 },

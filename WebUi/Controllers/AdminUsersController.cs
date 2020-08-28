@@ -56,6 +56,8 @@ namespace WebUi.Controllers
                 u.LastName = user.LastName;
                 u.Phone = user.Phone;
                 u.Email = user.Email;
+                u.Gender = user.Gender;
+                u.Date = user.Date;
             }
             await _repoUser.SaveChangesAsync();
             return await GetTable();

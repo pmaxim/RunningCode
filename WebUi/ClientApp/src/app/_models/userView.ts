@@ -6,6 +6,8 @@ export class UserView {
   lastName: string;
   phone: string;
   email: string;
+  gender: string;
+  date: string;
   isDeleted: boolean;
   isActive: boolean;
 }

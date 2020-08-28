@@ -34,6 +34,7 @@ export class AdminUsersComponent implements OnInit {
     if (p == null) {
       this.modal = new UserView();
       this.modal.id = 0;
+      this.modal.gender = "I will not say";
     }
     else this.modal = this.clone(p);
     this.modalRef = this.modalService.show(template);
